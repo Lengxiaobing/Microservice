@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 /**
- * @description: 发送邮件服务接口实现
+ * @description: 发送信息服务接口实现
  * @author: ZX
  * @date: 2018/12/21 9:32
  */

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 mvn clean package
 
-docker build -t hub.mooc.com:8080/micro-service/message-thrift-service:latest .
-docker push hub.mooc.com:8080/micro-service/message-thrift-service:latest
+docker build -t 192.168.3.34:5000/micro-service/message-thrift-service:latest .
+docker push 192.168.3.34:5000/micro-service/message-thrift-service:latest

@@ -1,5 +1,5 @@
-FROM hub.mooc.com:8080/micro-service/openjdk:7-jre
-MAINTAINER xxx xxx@imooc.com
+FROM 192.168.3.34:5000/openjdk:8-jre-alpine
+MAINTAINER zx 787681084@qq.com
 
 COPY target/message-thrift-service-1.0-SNAPSHOT.jar /message-thrift-service.jar
 
