@@ -1,0 +1,20 @@
+server:
+  port: 9093
+
+spring:
+  application:
+    name: config-center
+  cloud:
+    config:
+      server:
+        svn:
+          uri: https://192.168.3.33/svn/LKSG/resource/keshihua/code/trunk/config-repo
+          username: zr_zhuxiang
+          password: 123456
+        default-label: trunk
+  profiles:
+    active: subversion
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
