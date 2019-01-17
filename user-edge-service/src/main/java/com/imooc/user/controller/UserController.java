@@ -22,7 +22,9 @@ import java.security.MessageDigest;
 import java.util.Random;
 
 /**
- * Created by Michael on 2017/10/30.
+ * @description: 用户登录和注册
+ * @author: ZX
+ * @date: 2019/1/17 15:57
  */
 @Controller
 @RequestMapping("/user")

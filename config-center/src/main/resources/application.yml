@@ -1,5 +1,5 @@
 server:
-  port: 9093
+  port: 8020
 
 spring:
   application:
@@ -11,10 +11,12 @@ spring:
           uri: https://192.168.3.33/svn/LKSG/resource/keshihua/code/trunk/config-repo
           username: zr_zhuxiang
           password: 123456
-        default-label: trunk
+          search-paths: {application}
+        # 设置为uri当前目录
+        default-label:
   profiles:
     active: subversion
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:9091/eureka/
+      defaultZone: http://localhost:8010/eureka/

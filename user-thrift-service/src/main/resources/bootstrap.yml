@@ -1,0 +1,18 @@
+server:
+  port: 8031
+
+spring:
+  application:
+    name: user-thrift-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-center
+      profile: dev
+      label:
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka/

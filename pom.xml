@@ -15,11 +15,12 @@
         <module>user-thrift-service</module>
         <module>user-edge-service</module>
         <module>user-edge-service-client</module>
-        <module>course-dubbo-service-api</module>
-        <module>course-dubbo-service</module>
+        <module>course-service-api</module>
+        <module>course-service</module>
         <module>course-edge-service</module>
         <module>api-gateway-zuul</module>
         <module>eureka-registration-center</module>
+        <module>config-center</module>
     </modules>
 
 </project>

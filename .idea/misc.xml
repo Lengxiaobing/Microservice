@@ -7,9 +7,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/message-thrift-service/pom.xml" />
-        <option value="$PROJECT_DIR$/eureka-registration-center/pom.xml" />
-        <option value="$PROJECT_DIR$/config-center/pom.xml" />
       </list>
     </option>
   </component>

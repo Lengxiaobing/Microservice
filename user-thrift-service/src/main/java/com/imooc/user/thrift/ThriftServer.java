@@ -19,8 +19,8 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class ThriftServer {
 
-    @Value("${service.port}")
-    private int servicePort;
+    @Value("${server.port}")
+    private int serverPort;
 
     @Autowired
     private UserService.Iface userService;
@@ -32,7 +32,7 @@ public class ThriftServer {
 
         TNonblockingServerSocket socket = null;
         try {
-            socket = new TNonblockingServerSocket(servicePort);
+            socket = new TNonblockingServerSocket(serverPort);
         } catch (TTransportException e) {
             e.printStackTrace();
         }

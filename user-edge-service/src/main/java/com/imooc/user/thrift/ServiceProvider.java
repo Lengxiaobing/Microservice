@@ -10,22 +10,25 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by Michael on 2017/10/30.
  */
+@RefreshScope
 @Component
 public class ServiceProvider {
 
-    @Value("${thrift.user.ip}")
+    @Value("${thrift.use.ip}")
     private String serverIp;
 
-    @Value("${thrift.user.port}")
+    @Value("${thrift.use.port}")
     private int serverPort;
 
     @Value("${thrift.message.ip}")
     private String messageServerIp;
+
     @Value("${thrift.message.port}")
     private int messageServerPort;
 

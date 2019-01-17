@@ -1,6 +1,5 @@
 package com.imooc.course.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.imooc.course.dto.CourseDTO;
 import com.imooc.course.mapper.CourseMapper;
 import com.imooc.thrift.user.UserInfo;
@@ -14,7 +13,6 @@ import java.util.List;
 /**
  * Created by Michael on 2017/11/3.
  */
-@Service
 public class CourseServiceImpl implements ICourseService {
 
 

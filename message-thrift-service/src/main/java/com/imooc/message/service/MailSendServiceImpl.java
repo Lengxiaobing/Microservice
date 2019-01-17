@@ -3,11 +3,13 @@ package com.imooc.message.service;
 import com.imooc.thrift.message.MessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @description: 发送信息服务接口实现
@@ -16,10 +18,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
+@RefreshScope
 public class MailSendServiceImpl implements MessageService.Iface {
 
 
-    @Autowired
+    @Resource
     private JavaMailSender mailSender;
 
     /**

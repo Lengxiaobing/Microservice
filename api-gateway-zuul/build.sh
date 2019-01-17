@@ -2,6 +2,6 @@
 
 mvn package
 
-docker build -t hub.mooc.com:8080/micro-service/api-gateway-zuul:latest .
+docker build -t 192.168.3.34:80/micro-service/api-gateway-zuul:latest .
 
-docker push hub.mooc.com:8080/micro-service/api-gateway-zuul:latest
+docker push 192.168.3.34:80/micro-service/api-gateway-zuul:latest
