@@ -3,7 +3,7 @@ version: '1'
 networks:
   default:
     external:
-      name: imooc-network
+      name: cloud-network
 
 services:
   message-service:
@@ -38,7 +38,7 @@ services:
     - "--zookeeper.address=172.19.0.4"
 
   api-gateway-zuul:
-    image: api-gateway-zuul:latest
+    image: api-gateway-gateway:latest
     links:
     - course-edge-service
     - user-edge-service

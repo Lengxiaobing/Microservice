@@ -10,8 +10,12 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# idea
-.idea
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
 target/
 
 # Package Files #

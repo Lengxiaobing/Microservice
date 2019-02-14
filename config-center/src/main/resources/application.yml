@@ -11,6 +11,7 @@ spring:
           uri: https://192.168.3.33/svn/LKSG/resource/keshihua/code/trunk/config-repo
           username: zr_zhuxiang
           password: 123456
+          # 根据app名称查找配置文件
           search-paths: {application}
         # 设置为uri当前目录
         default-label:

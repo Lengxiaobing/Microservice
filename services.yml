@@ -56,7 +56,7 @@ services:
     depends_on:
       - user-edge-service
   api-gateway:
-    image: hub.mooc.com:8080/micro-service/api-gateway-zuul:latest
+    image: hub.mooc.com:8080/micro-service/api-gateway-gateway:latest
     deploy:
       endpoint_mode: vip
       resources:
@@ -72,4 +72,4 @@ services:
 networks:
   default:
     external:
-      name: imooc-overlay
+      name: cloud-overlay

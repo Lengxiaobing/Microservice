@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway-zuul" />
+        <module name="api-gateway" />
         <module name="config-center" />
         <module name="course-edge-service" />
         <module name="course-service" />
@@ -21,7 +21,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-gateway-zuul" target="1.7" />
+      <module name="api-gateway" target="1.8" />
       <module name="config-center" target="1.8" />
       <module name="course-edge-service" target="1.8" />
       <module name="course-service" target="1.8" />
@@ -35,5 +35,17 @@
       <module name="user-thrift-service" target="1.8" />
       <module name="user-thrift-service-api" target="1.7" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="config-center" options="-parameters" />
+      <module name="course-edge-service" options="-parameters" />
+      <module name="course-service" options="-parameters" />
+      <module name="eureka-registration-center" options="-parameters" />
+      <module name="message-thrift-service" options="-parameters" />
+      <module name="user-edge-service" options="-parameters" />
+      <module name="user-thrift-service" options="-parameters" />
+    </option>
   </component>
 </project>

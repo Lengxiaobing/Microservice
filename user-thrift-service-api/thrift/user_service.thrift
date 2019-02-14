@@ -1,4 +1,4 @@
-namespace java com.imooc.thrift.user
+namespace java com.cloud.thrift.user
 
 struct UserInfo {
     1:i32 id,

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: course-service
+  #数据源的配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.3.152:3306/micro_service
+    username: root
+    password: Yuhan123456
+
+thrift:
+  user:
+    ip: user-thrift-service
+    port: 8031
