@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>注册页面</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="/layui/lay/modules/layer.js"></script>
+    <link href="/layui/css/layui.css" rel="stylesheet">
+    <link href="/layui/css/modules/layer/default/layer.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body onkeydown="enterlogin(event);">
+
+<div class="login-main">
+    <header class="layui-elip">注册</header>
+
+    <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+        <div class="layui-form-item">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="username"></label>
+            <input type="text" name="username" id="username" placeholder="用户名" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="password"></label>
+            <input type="password" name="password" id="password" placeholder="密码" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone" for="realName"></label>
+            <input type="text" name="realName" id="realName" placeholder="真实姓名" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone" for="mobile"></label>
+            <input type="text" name="mobile" id="mobile" placeholder="手机号" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone" for="email"></label>
+            <input type="text" name="email" id="email" placeholder="邮箱" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn-half" onclick="userSign()">注 册</button>
+            <button class="layui-btn layui-btn-half" onclick="userLogin()">登 录</button>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    //回车登录
+    function enterlogin(e) {
+        var key = window.event ? e.keyCode : e.which;
+        if (key === 13) {
+            userSign();
+        }
+    }
+
+    //用户注册
+    function userSign() {
+        //获取用户名、密码
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var realName = $("#realName").val();
+        var mobile = $("#mobile").val();
+        var email = $("#email").val();
+
+        if (username == null || username === "") {
+            layer.msg('请输入用户名！', {
+                offset: '15px'
+                , icon: 1
+            });
+            return;
+        }
+        if (password == null || password === "") {
+            layer.msg('请输入密码！', {
+                offset: '15px'
+                , icon: 1
+            });
+            return;
+        }
+
+        $.ajax({
+            url: "/user/add",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            async: false,
+            data: JSON.stringify({
+                "username": username,
+                "password": password,
+                "realName": realName,
+                "mobile": mobile,
+                "email": email
+            }),
+            success: function (data) {
+                if (data.code != null && data.code == "200") {
+                    var href = '/index.html';
+                    if (data.redirect_uri != null) {
+                        href = data.redirect_uri;
+                    }
+                    //注册成功的提示与跳转
+                    layer.msg('注册成功', {
+                        offset: '15px'
+                        , icon: 1
+                        , time: 1000
+                    }, function () {
+                        window.location.href = decodeURIComponent(href);
+                    });
+                } else if (data.data != null) {
+                    layer.msg(data.data, {
+                        offset: '15px'
+                        , icon: 1
+                    });
+                } else {
+                    layer.msg(data.msg, {
+                        offset: '15px'
+                        , icon: 1
+                    });
+                }
+            }
+        });
+    }
+
+    // 用户登录
+    function userLogin() {
+        var href = '/index.html';
+        window.location.href = decodeURIComponent(href);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Chat With STOMP Message</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="/layui/lay/modules/layer.js"></script>
+    <link href="/layui/css/layui.css" rel="stylesheet">
+    <link href="/layui/css/modules/layer/default/layer.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <style type="text/css">
+        #connect-container {
+            margin: 0 auto;
+            width: 550px;
+        }
+
+        #connect-container div {
+            padding: 5px;
+            margin: 0 7px 10px 0;
+        }
+
+        .message input {
+            padding: 5px;
+            margin: 0 7px 10px 0;
+        }
+
+        .layui-btn {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div id="connect-container" class="layui-elem-field">
+        <legend>Spring cloud study</legend>
+        <div>
+            <input id="target" type="text" class="layui-input" size="40" style="width: 500px"
+                   value=""/>
+            <br>
+            <textarea id="param" cols="20" rows="15" type="text" class="layui-textarea" size="40"
+                      style="width: 500px; height: 100px"></textarea>
+        </div>
+        <div>
+            <button id="post" class="layui-btn layui-btn-normal" onclick="post();">post</button>
+            <button id="get" class="layui-btn layui-btn-normal layui-btn-disabled" disabled="disabled"
+                    onclick="get();">get
+            </button>
+        </div>
+        <div class="row">
+            <button id="clear" class="layui-btn layui-btn-normal layui-btn-disabled" disabled="disabled"
+                    onclick="clearGreeting();">clear
+            </button>
+            <div class="col-md-12">
+                <table id="conversation" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Greetings:</th>
+                    </tr>
+                    </thead>
+                    <tbody id="greetings">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var stompClient = null;
+
+    $(function () {
+        var target = $("#target");
+        if (window.location.protocol === 'http:') {
+            target.val('http://' + window.location.host + target.val());
+        } else {
+            target.val('https://' + window.location.host + target.val());
+        }
+    });
+
+    //post请求
+    function post() {
+        var target = $("#target").val();
+        var param = $("#param").val();
+        if (target != null) {
+            $.ajax({
+                url: target,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                async: true,
+                data: JSON.stringify(param),
+                success: function (data) {
+                    if (data.data != null) {
+                        $.each(data.data, function (i, item) {
+                            log(JSON.parse(item).content);
+                            showGreeting(JSON.parse(item).content);
+                        })
+                    } else if (data.code != null && data.code == "500") {
+                        layer.msg(data.msg, {
+                            offset: 'auto'
+                            , icon: 2
+                        });
+                    }
+                }
+            });
+        } else {
+            layer.msg('请求连接不能为空.', {
+                offset: 'auto'
+                , icon: 2
+            });
+        }
+    }
+
+    //get请求
+    function get() {
+        var target = $("#target").val();
+        if (target != null) {
+            $.ajax({
+                url: target,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    if (data.data != null) {
+                        $.each(data.data, function (i, item) {
+                            log(JSON.parse(item).content);
+                            showGreeting(JSON.parse(item).content);
+                        })
+                    } else if (data.code != null && data.code == "500") {
+                        layer.msg(data.msg, {
+                            offset: 'auto'
+                            , icon: 2
+                        });
+                    }
+                }
+            });
+        } else {
+            layer.msg('请求连接不能为空.', {
+                offset: 'auto'
+                , icon: 2
+            });
+        }
+    }
+
+    // 显示
+    function showGreeting(message) {
+        $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    }
+
+    // 清空
+    function clearGreeting() {
+        $("#greetings").html('');
+    }
+
+    //日志输出
+    function log(message) {
+        console.debug(message);
+    }
+</script>
+</body>
+</html>

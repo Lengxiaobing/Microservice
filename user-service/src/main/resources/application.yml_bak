@@ -1,0 +1,12 @@
+server:
+  port: 8031
+
+spring:
+  application:
+    name: user-service
+  #数据源的配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/micro_service
+    username: root
+    password: root

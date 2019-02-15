@@ -1,19 +1,20 @@
-package com.cloud.gateway;
+package com.cloud.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @Description: 网关
- * @Author: ZX
- * @Date: 2019/2/14 16:54
+ * @description: 用户服务
+ * 
+ * @author:   ZX
+ * @date:     2019/1/17 15:29
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ApiGatewayApplication {
+public class UserServiceApplication {
 
     public static void main(String args[]) {
-        SpringApplication.run(ApiGatewayApplication.class, args);
+        SpringApplication.run(UserServiceApplication.class, args);
     }
 }
