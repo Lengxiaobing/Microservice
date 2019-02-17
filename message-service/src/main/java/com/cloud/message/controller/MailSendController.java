@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @date: 2019/1/17 9:06
  */
 @RestController
-@RequestMapping("message")
+@RequestMapping("/message")
 public class MailSendController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class MailSendController {
      * @param message
      * @return
      */
-    @RequestMapping(value = "mobile", method = RequestMethod.POST)
+    @RequestMapping(value = "/mobile", method = RequestMethod.POST)
     @ResponseBody
     public boolean mobileMessage(@RequestParam String mobile, @RequestParam String message){
         return mailSendService.sendMobileMessage(mobile, message);
@@ -37,7 +37,7 @@ public class MailSendController {
      * @param message
      * @return
      */
-    @RequestMapping(value = "mail", method = RequestMethod.POST)
+    @RequestMapping(value = "/mail", method = RequestMethod.POST)
     @ResponseBody
     public boolean mailMessage(@RequestParam String email, @RequestParam String message) {
         return mailSendService.sendEmailMessage(email, message);
