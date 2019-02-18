@@ -1,6 +1,4 @@
-# microservice
-
-## Spring Cloud 微服务学习
+# Spring Cloud 微服务学习
 
 **api-gateway**：Gateway网关
 
