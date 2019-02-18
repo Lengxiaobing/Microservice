@@ -16,8 +16,8 @@ spring:
           password: 123456
         # 设置为uri配置的路径
         default-label:
-    profiles:
-      active: subversion
+  profiles:
+    active: subversion
 
     # git配置方式
 #    config:
