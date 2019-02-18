@@ -1,5 +1,6 @@
 package com.cloud.user.service.impl;
 
+import com.cloud.user.service.MessageServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * -@author: zhuxiang
  * -@create: 2019-02-17 14:26
  */
-@FeignClient("message-service")
+@FeignClient(name = "message-service", fallback = MessageServiceImpl.class)
 public interface MessageService {
 
     /**
