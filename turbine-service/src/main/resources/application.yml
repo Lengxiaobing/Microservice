@@ -1,0 +1,18 @@
+server:
+  port: 8032
+
+spring:
+  application:
+    name: turbine-service
+
+turbine:
+  app-config: user-service
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
