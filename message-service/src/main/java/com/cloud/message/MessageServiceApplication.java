@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @description: 信息服务启动类
- * 
+ *
  * @author:   ZX
  * @date:     2019/1/16 9:06
  */
