@@ -1,14 +1,15 @@
 # microservice
-**Spring Cloud 微服务学习**
 
-注册中心：Eureka
+##Spring Cloud 微服务学习
 
-配置中心：Git、SVN Refresh
+**api-gateway**：Gateway网关
 
-网关：Gateway
+**config-center**: 配置中心Git/SVN
 
-服务调用：Feign 
+**eureka-registration-center**: Eureka注册中心
 
-熔断：Hystrix
+**message-service**：测试程序-服务提供者
 
-熔断检测：hystrix-dashboard，netflix-turbine
+**turbine-service**： 熔断监控hystrix-dashboard，netflix-turbine
+
+**user-service**：测试程序-服务调用者（包含熔断示例）
