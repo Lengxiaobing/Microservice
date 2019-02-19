@@ -1,8 +1,9 @@
 package com.cloud.user.service;
 
 import com.cloud.user.service.impl.MessageService;
+import feign.hystrix.FallbackFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Description: 调用信息服务方法--熔断回调实现
@@ -10,30 +11,29 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Date: 2019/2/18 15:04
  */
 @Component
-public class MessageServiceImpl implements MessageService {
+@Slf4j
+public class MessageServiceImpl implements FallbackFactory<MessageService> {
 
-
-    /**
-     * 信息服务：发送手机验证码接口，熔断回调方法
-     *
-     * @param mobile
-     * @param message
-     * @return
-     */
     @Override
-    public boolean mobileMessage(@RequestParam(value = "mobile") String mobile, @RequestParam(value = "message") String message) {
-        return false;
-    }
+    public MessageService create(Throwable cause) {
+        log.error("", cause);
 
-    /**
-     * 信息服务：发送邮箱验证码接口，熔断回调方法
-     *
-     * @param email
-     * @param message
-     * @return
-     */
-    @Override
-    public boolean mailMessage(@RequestParam(value = "email") String email, @RequestParam(value = "message") String message) {
-        return false;
+        return new MessageService() {
+            @Override
+            public boolean mobileMessage(String mobile, String message) {
+                return false;
+            }
+
+            @Override
+            public boolean mailMessage(String email, String message) {
+                return false;
+            }
+
+            @Override
+            public String test() {
+                log.error("触发熔断");
+                return null;
+            }
+        };
     }
 }

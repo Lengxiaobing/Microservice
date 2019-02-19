@@ -3,6 +3,8 @@ package com.cloud.message.controller;
 
 import com.cloud.message.service.MailSendServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,7 +28,7 @@ public class MailSendController {
      */
     @RequestMapping(value = "/mobile", method = RequestMethod.POST)
     @ResponseBody
-    public boolean mobileMessage(@RequestParam String mobile, @RequestParam String message){
+    public boolean mobileMessage(@RequestParam String mobile, @RequestParam String message) {
         return mailSendService.sendMobileMessage(mobile, message);
     }
 
@@ -41,5 +43,15 @@ public class MailSendController {
     @ResponseBody
     public boolean mailMessage(@RequestParam String email, @RequestParam String message) {
         return mailSendService.sendEmailMessage(email, message);
+    }
+
+    /**
+     * 熔断测试
+     *
+     * @return
+     */
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("空对象");
     }
 }

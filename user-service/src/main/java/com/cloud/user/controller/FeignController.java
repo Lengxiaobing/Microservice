@@ -2,13 +2,9 @@ package com.cloud.user.controller;
 
 import com.cloud.user.service.impl.MessageService;
 import com.cloud.user.vo.BaseVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * -@description: Feign远程服务调用
@@ -20,7 +16,7 @@ import javax.annotation.Resource;
 @RequestMapping("/feign")
 public class FeignController {
 
-    @Resource
+    @Autowired
     private MessageService messageService;
 
     /**
@@ -47,5 +43,16 @@ public class FeignController {
     public Object mail(@RequestParam String email, @RequestParam String message) {
         boolean mailMessage = messageService.mailMessage(email, message);
         return new BaseVO(mailMessage);
+    }
+
+    /**
+     * 熔断测试
+     *
+     * @return
+     */
+    @GetMapping("/test")
+    public String test() {
+        messageService.test();
+        return null;
     }
 }

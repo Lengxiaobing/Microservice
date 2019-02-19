@@ -2,6 +2,7 @@ package com.cloud.user.service.impl;
 
 import com.cloud.user.service.MessageServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * -@author: zhuxiang
  * -@create: 2019-02-17 14:26
  */
-@FeignClient(name = "message-service", fallback = MessageServiceImpl.class)
+@FeignClient(name = "message-service", fallbackFactory = MessageServiceImpl.class, path = "/message")
 public interface MessageService {
 
     /**
@@ -22,7 +23,7 @@ public interface MessageService {
      * @param message
      * @return
      */
-    @RequestMapping(value = "/message/mobile", method = RequestMethod.POST)
+    @RequestMapping(value = "/mobile", method = RequestMethod.POST)
     boolean mobileMessage(@RequestParam("mobile") String mobile, @RequestParam("message") String message);
 
     /**
@@ -32,6 +33,14 @@ public interface MessageService {
      * @param message
      * @return
      */
-    @RequestMapping(value = "/message/mail", method = RequestMethod.POST)
+    @RequestMapping(value = "/mail", method = RequestMethod.POST)
     boolean mailMessage(@RequestParam("email") String email, @RequestParam("message") String message);
+
+    /**
+     * 熔断测试
+     *
+     * @return
+     */
+    @GetMapping("/test")
+    String test();
 }
