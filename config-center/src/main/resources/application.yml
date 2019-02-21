@@ -1,35 +1,3 @@
-server:
-  port: 8020
-
 spring:
-  application:
-    name: config-center
-  cloud:
-    # SVN配置方式
-    config:
-      server:
-        svn:
-          uri: https://192.168.3.33/svn/LKSG/resource/keshihua/code/trunk/config-repo
-          # 根据app名称查找配置文件
-          search-paths: {application}
-          username: zr_zhuxiang
-          password: 123456
-        # 设置为uri配置的路径
-        default-label:
   profiles:
-    active: subversion
-
-    # git配置方式
-#    config:
-#      server:
-#        git:
-#          uri: https://github.com/Lengxiaobing/Config_Center.git
-#          # git仓库地址下的相对地址，可以配置多个，用,分割。
-#          search-paths: microservice
-#          username:
-#          password:
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka/
+    active: git
