@@ -1,5 +1,6 @@
 # Spring Cloud 微服务学习
-
+**学习Spring Cloud架构，并Docker化部署。**
+## 模块组成
 **api-gateway**：Gateway网关
 
 **config-center**: 配置中心Git/SVN
