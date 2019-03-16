@@ -1,5 +1,9 @@
 # Spring Cloud 微服务学习
-**学习Spring Cloud架构，并Docker化部署。**
+**学习Spring Cloud架构，并Docker化部署。**  
+**版本：**  
+jdk：1.8.0  
+spring-boot-starter-parent：2.1.2.RELEASE  
+spring-cloud-dependencies：Greenwich.RC2  
 ## 模块组成
 **api-gateway**：Gateway网关
 
