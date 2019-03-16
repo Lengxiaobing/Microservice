@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+      hibernate: ERROR
+
+spring:
+  application:
+    name: dev
+  datasource:
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/primary?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+    secondary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/secondary?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+
+  jpa:
+    #primary数据源jpa配置，部分配置仅在此处生效
+    primary:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    #second数据源jpa配置
+    secondary:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect

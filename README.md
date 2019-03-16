@@ -16,3 +16,5 @@ spring-cloud-dependencies：Greenwich.RC2
 **turbine-service**： 熔断监控hystrix-dashboard，netflix-turbine
 
 **user-service**：测试程序-服务调用者（包含熔断示例）
+
+**multi-datasource**: 多数据源配置
