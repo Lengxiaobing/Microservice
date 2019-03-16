@@ -19,6 +19,7 @@
 		<module>user-service</module>
 		<module>turbine-service</module>
 		<module>multi-datasource</module>
+		<module>dynamic-datasource</module>
 	</modules>
 
 </project>
