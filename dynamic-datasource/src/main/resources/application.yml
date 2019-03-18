@@ -21,6 +21,9 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/slave2?useUnicode=true&characterEncoding=utf-8&useSSL=false
         username: root
         password: root
+  jpa:
+    show-sql: true
+    open-in-view: false
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
@@ -28,6 +31,6 @@ mybatis:
 logging:
   level:
     com:
-      yukong:
-        chapter5:
+      cloud:
+        dynamic:
           repository: debug

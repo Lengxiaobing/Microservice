@@ -39,7 +39,7 @@ public interface UserMapper {
      * @return
      */
     @DataSource
-    int deleteById(Long id);
+    int deleteById(Integer id);
 
     /**
      * 根据id查询
@@ -48,12 +48,13 @@ public interface UserMapper {
      * @return
      */
     @DataSource("slave1")
-    User selectById(Long id);
+    User selectById(Integer id);
 
     /**
      * 查询所有用户信息
      *
      * @return
      */
+    @DataSource("slave2")
     List<User> selectAll();
 }

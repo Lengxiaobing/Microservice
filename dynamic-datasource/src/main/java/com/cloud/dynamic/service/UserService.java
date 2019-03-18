@@ -24,7 +24,7 @@ public class UserService {
         user.setAge(18);
         userMapper.save(user);
         User user1 = new User();
-        user1.setId(2L);
+        user1.setId(2);
         user1.setPassword("Transactional");
         // 返回插入的记录数 ，期望是1条 如果实际不是一条则抛出异常
         System.out.println(userMapper.update(user1));

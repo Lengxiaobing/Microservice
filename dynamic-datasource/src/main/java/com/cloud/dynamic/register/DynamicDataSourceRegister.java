@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * @Description: 动态数据源注册
- * 实现 ImportBeanDefinitionRegistrar 实现数据源注册
+ * 实现 ImportBeanDefinitionRegistrar 用于数据源注册
  * 实现 EnvironmentAware 用于读取application.yml配置
  * @Author: ZX
  * @Date: 2019/3/16 16:57
@@ -55,7 +55,7 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
     /**
      * 存储我们注册的数据源
      */
-    private Map<String, DataSource> customDataSources = new HashMap<String, DataSource>();
+    private Map<String, DataSource> customDataSources = new HashMap<>();
 
     /**
      * 参数绑定工具 springboot2.0新推出
@@ -71,25 +71,27 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         // 获取所有数据源配置
-        Map config, defauleDataSourceProperties;
-        defauleDataSourceProperties = binder.bind("spring.datasource.master", Map.class).get();
+        Map config, defaultDataSourceProperties;
+
+        defaultDataSourceProperties = binder.bind("spring.datasource.master", Map.class).get();
         // 获取数据源类型
         String typeStr = evn.getProperty("spring.datasource.master.type");
         // 获取数据源类型
         Class<? extends DataSource> clazz = getDataSourceType(typeStr);
         // 绑定默认数据源参数 也就是主数据源
-        DataSource consumerDatasource, defaultDatasource = bind(clazz, defauleDataSourceProperties);
+        DataSource consumerDatasource, defaultDatasource = bind(clazz, defaultDataSourceProperties);
         DynamicDataSourceContextHolder.dataSourceIds.add("master");
         log.info("注册默认数据源成功");
+
         // 获取其他数据源配置
         List<Map> configs = binder.bind("spring.datasource.cluster", Bindable.listOf(Map.class)).get();
         // 遍历从数据源
         for (int i = 0; i < configs.size(); i++) {
             config = configs.get(i);
             clazz = getDataSourceType((String) config.get("type"));
-            defauleDataSourceProperties = config;
+            defaultDataSourceProperties = config;
             // 绑定参数
-            consumerDatasource = bind(clazz, defauleDataSourceProperties);
+            consumerDatasource = bind(clazz, defaultDataSourceProperties);
             // 获取数据源的key，以便通过该key可以定位到数据源
             String key = config.get("key").toString();
             customDataSources.put(key, consumerDatasource);
@@ -97,6 +99,7 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
             DynamicDataSourceContextHolder.dataSourceIds.add(key);
             log.info("注册数据源{}成功", key);
         }
+
         // bean定义类
         GenericBeanDefinition define = new GenericBeanDefinition();
         // 设置bean的类型，此处DynamicRoutingDataSource是继承AbstractRoutingDataSource的实现类

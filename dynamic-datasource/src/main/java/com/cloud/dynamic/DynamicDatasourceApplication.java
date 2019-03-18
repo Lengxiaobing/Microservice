@@ -15,10 +15,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Author: ZX
  * @Date: 2019/3/16 17:00
  */
-@Import(DynamicDataSourceRegister.class)
-@MapperScan("com.cloud.dynamic.repository")
+@Import(DynamicDataSourceRegister.class) // 注册动态多数据源
+@MapperScan("com.cloud.dynamic.repository") // 对应的mapper类的路径
 @SpringBootApplication
-@EnableTransactionManagement
+@EnableTransactionManagement // 开启事物管理
 public class DynamicDatasourceApplication {
 
     public static void main(String[] args) {

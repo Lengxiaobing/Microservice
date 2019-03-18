@@ -30,21 +30,25 @@ public class DynamicDatasourceApplicationTests {
         user.setPassword("master");
         user.setSex(1);
         user.setAge(18);
+        int save = userMapper.save(user);
+        System.out.println(save);
         Assert.assertEquals(1, userMapper.save(user));
     }
 
     @Test
     public void update() {
         User user = new User();
-        user.setId(8L);
+        user.setId(1);
         user.setPassword("123456");
         // 返回插入的记录数 ，期望是1条 如果实际不是一条则抛出异常
+        int update = userMapper.update(user);
+        System.out.println(update);
         Assert.assertEquals(1, userMapper.update(user));
     }
 
     @Test
     public void selectById() {
-        User user = userMapper.selectById(2L);
+        User user = userMapper.selectById(1);
         System.out.println("id:" + user.getId());
         System.out.println("name:" + user.getUsername());
         System.out.println("password:" + user.getPassword());
@@ -52,7 +56,7 @@ public class DynamicDatasourceApplicationTests {
 
     @Test
     public void deleteById() {
-        Assert.assertEquals(1, userMapper.deleteById(1L));
+        Assert.assertEquals(1, userMapper.deleteById(1));
     }
 
     @Test

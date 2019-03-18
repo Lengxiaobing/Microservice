@@ -5,16 +5,17 @@ import com.cloud.dynamic.config.DynamicDataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
- * @Description: 动态数据源方面
+ * @Description: 动态数据源Aspect
  * @Author: ZX
  * @Date: 2019/3/16 16:49
  */
-//@Aspect
-//@Component
-//@Order(-1900)
+@Aspect
+@Component
 @Slf4j
 public class DynamicDataSourceAspect {
 
@@ -33,6 +34,5 @@ public class DynamicDataSourceAspect {
     public void restoreDataSource(JoinPoint point, DataSource ds) {
         log.debug("Revert DataSource : " + ds.value() + " > " + point.getSignature());
         DynamicDataSourceContextHolder.removeDataSourceRouterKey();
-
     }
 }

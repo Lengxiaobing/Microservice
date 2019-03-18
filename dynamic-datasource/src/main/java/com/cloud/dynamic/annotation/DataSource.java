@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @Description: 切换数据注解
- * 可以用于类或者方法级别：方法级别优先级 > 类级别
+ * 可以用于类或者方法，优先级：方法级别 > 类级别
  * @Author: ZX
  * @Date: 2019/3/16 16:47
  */

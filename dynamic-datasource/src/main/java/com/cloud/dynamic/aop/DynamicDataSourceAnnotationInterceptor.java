@@ -38,6 +38,12 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
         }
     }
 
+    /**
+     * 确定数据源
+     *
+     * @param invocation
+     * @return
+     */
     private String determineDatasource(MethodInvocation invocation) {
         Method method = invocation.getMethod();
         if (METHOD_CACHE.containsKey(method)) {

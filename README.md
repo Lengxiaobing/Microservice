@@ -7,14 +7,16 @@ spring-cloud-dependencies：Greenwich.RC2
 ## 模块组成
 **api-gateway**：Gateway网关
 
-**config-center**: 配置中心Git/SVN
+**config-center**：配置中心Git/SVN
 
-**eureka-registration-center**: Eureka注册中心
+**eureka-registration-center**：Eureka注册中心
 
 **message-service**：测试程序-服务提供者
 
-**turbine-service**： 熔断监控hystrix-dashboard，netflix-turbine
+**turbine-service**：熔断监控hystrix-dashboard，netflix-turbine
 
 **user-service**：测试程序-服务调用者（包含熔断示例）
 
-**multi-datasource**: 多数据源配置
+**multi-datasource**：多数据源配置，通过编写数据源的配置类实现（有多少个数据源就写多少个数据源的配置类）
+
+**dynamic-datasource**：动态数据源切换，通过继承AbstractRoutingDataSource来动态选择DataSource路由，通过AOP的方式进行切换。

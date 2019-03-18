@@ -15,6 +15,6 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource {
     protected Object determineCurrentLookupKey() {
         String dataSourceName = DynamicDataSourceContextHolder.getDataSourceRouterKey();
         log.info("当前数据源是：{}", dataSourceName);
-        return DynamicDataSourceContextHolder.getDataSourceRouterKey();
+        return dataSourceName;
     }
 }

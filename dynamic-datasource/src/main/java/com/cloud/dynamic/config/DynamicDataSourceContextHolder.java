@@ -27,6 +27,11 @@ public class DynamicDataSourceContextHolder {
         return HOLDER.get();
     }
 
+    /**
+     * 添加数据源
+     *
+     * @param dataSourceRouterKey
+     */
     public static void setDataSourceRouterKey(String dataSourceRouterKey) {
         log.info("切换至{}数据源", dataSourceRouterKey);
         HOLDER.set(dataSourceRouterKey);
