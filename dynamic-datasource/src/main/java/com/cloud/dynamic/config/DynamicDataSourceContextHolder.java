@@ -45,7 +45,7 @@ public class DynamicDataSourceContextHolder {
     }
 
     /**
-     * 判断指定DataSrouce当前是否存在
+     * 判断指定DataSource当前是否存在
      *
      * @param dataSourceId
      * @return
