@@ -20,3 +20,7 @@ spring-cloud-dependencies：Greenwich.RC2
 **multi-datasource**：多数据源配置，通过编写数据源的配置类实现（有多少个数据源就写多少个数据源的配置类）
 
 **dynamic-datasource**：动态数据源切换，通过继承AbstractRoutingDataSource来动态选择DataSource路由，通过AOP的方式进行切换。
+
+**config-center-bus**：消息总线bus版配置中心
+
+**message-service-bus**：测试程序-服务提供者-消息总线bus版

@@ -14,8 +14,10 @@
 	<modules>
 		<module>eureka-registration-center</module>
 		<module>config-center</module>
+		<module>config-center-bus</module>
 		<module>api-gateway</module>
 		<module>message-service</module>
+		<module>message-service-bus</module>
 		<module>user-service</module>
 		<module>turbine-service</module>
 		<module>multi-datasource</module>

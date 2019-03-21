@@ -1,0 +1,39 @@
+server:
+  port: 8033
+spring:
+  application:
+    name: message-service-bus
+  mail:
+    host: smtp.qq.com
+    username: 787681084@qq.com
+    password: qrcdyeagwhzdbcdd
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    port: 465
+    protocol: smtps
+  # RabbitMQ
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: root
+    password: root
+  # 上传文件配置
+  servlet:
+    multipart:
+      max-request-size: 200MB
+      max-file-size: 200MB
+
+mail:
+  # 发送人
+  fromMail:
+    addr: 787681084@qq.com
+  # 接收人
+  receptionMail:
+    addr: 1255724894@qq.com
+
