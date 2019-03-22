@@ -8,7 +8,7 @@ spring-cloud-dependencies：Greenwich.RC2
 ## 模块组成
 **api-gateway**：Gateway网关
 
-**config-center**：配置中心Git/SVN
+**config-center**：配置中心 Git/SVN
 
 **config-center-bus**：配置中心-消息总线bus版
 
@@ -18,7 +18,7 @@ spring-cloud-dependencies：Greenwich.RC2
 
 **message-service-bus**：测试程序-服务提供者-消息总线bus版
 
-**user-service**：测试程序-服务调用者（包含熔断示例）
+**user-service**：测试程序-服务调用者openfeign，包含熔断 hystrix
 
 **turbine-service**：熔断监控hystrix-dashboard，netflix-turbine
 
