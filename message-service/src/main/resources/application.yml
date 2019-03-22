@@ -31,3 +31,5 @@ mail:
   receptionMail:
     addr: 1255724894@qq.com
 
+parameter:
+  hello: dev

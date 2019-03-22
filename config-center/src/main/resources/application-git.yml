@@ -9,9 +9,9 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Lengxiaobing/spring-cloud.git
+          uri: https://github.com/Lengxiaobing/config-center.git
           # git仓库地址下的相对地址，可以配置多个，用,分割。
-          search-paths: spring-cloud
+          search-paths: microservice
           username:
           password:
 
