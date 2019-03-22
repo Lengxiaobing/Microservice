@@ -9,9 +9,9 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Lengxiaobing/spring-cloud.git
+          uri: https://github.com/Lengxiaobing/config-center.git
           # git仓库地址下的相对地址，可以配置多个，用,分割。
-          search-paths: spring-cloud
+          search-paths: microservice
           username:
           password:
     # 开启跟踪总线事件
@@ -22,8 +22,8 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: root
-    password: root
+    username: guest
+    password: guest
 
 # Web管理端点的配置属性
 management:

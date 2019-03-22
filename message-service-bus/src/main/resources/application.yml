@@ -21,8 +21,8 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: root
-    password: root
+    username: guest
+    password: guest
   # 上传文件配置
   servlet:
     multipart:
@@ -37,3 +37,5 @@ mail:
   receptionMail:
     addr: 1255724894@qq.com
 
+parameter:
+  hello: dev
