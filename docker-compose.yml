@@ -7,15 +7,15 @@ networks:
 
 services:
   message-service:
-    image: message-service:V1.0
+    image: message-service:latest
 
   user-service:
-    image: user-service:V1.0
+    image: user-service:latest
     command:
-      - "--mysql.address=172.19.0.2:3306"
+      - "--mysql.address=127.0.0.1:3306"
 
   api-gateway:
-    image: api-gateway:V1.0
+    image: api-gateway:latest
     links:
       - message-service
       - user-service
