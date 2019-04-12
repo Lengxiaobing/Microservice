@@ -3,6 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/eureka-registration-center-1.0-SNAPSHOT.jar /eureka-registration-center.jar
 
-EXPOSE 8081
+EXPOSE 8010
 
 ENTRYPOINT ["java", "-jar", "/eureka-registration-center.jar"]

@@ -3,6 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/config-center-1.0-SNAPSHOT.jar /config-center.jar
 
-EXPOSE 9090
+EXPOSE 8020
 
 ENTRYPOINT ["java", "-jar", "/config-center.jar"]

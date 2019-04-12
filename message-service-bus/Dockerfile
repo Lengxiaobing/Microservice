@@ -3,4 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/message-service-bus-1.0-SNAPSHOT.jar /message-service-bus.jar
 
+EXPOSE 8033
+
 ENTRYPOINT ["java", "-jar", "/message-service-bus.jar"]

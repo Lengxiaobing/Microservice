@@ -3,6 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/turbine-service-1.0-SNAPSHOT.jar /turbine-service.jar
 
-EXPOSE 9090
+EXPOSE 8032
 
 ENTRYPOINT ["java", "-jar", "/turbine-service.jar"]

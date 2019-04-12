@@ -3,6 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/multi-datasource-1.0-SNAPSHOT.jar /multi-datasource.jar
 
-EXPOSE 9090
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "/multi-datasource.jar"]

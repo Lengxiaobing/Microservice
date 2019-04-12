@@ -3,6 +3,6 @@ MAINTAINER zx 787681084@qq.com
 
 COPY target/config-center-bus-1.0-SNAPSHOT.jar /config-center-bus.jar
 
-EXPOSE 9090
+EXPOSE 8020
 
 ENTRYPOINT ["java", "-jar", "/config-center-bus.jar"]
