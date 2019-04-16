@@ -1,6 +1,8 @@
 package com.multi.datasource.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -60,6 +62,18 @@ public class PrimaryConfig {
     }
 
     /**
+     * 扫描spring.jpa.primary.hibernate开头的配置信息
+     *
+     * @return Hibernate配置信息
+     */
+    @Primary
+    @Bean(name = "primaryHibernateProperties")
+    @ConfigurationProperties(prefix = "spring.jpa.primary.hibernate")
+    public HibernateProperties hibernateProperties() {
+        return new HibernateProperties();
+    }
+
+    /**
      * 获取主库实体工厂管理对象
      *
      * @param primaryDataSource 注入名为primaryDataSource的数据源
@@ -70,12 +84,13 @@ public class PrimaryConfig {
     @Primary
     @Bean(name = "primaryEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("primaryDataSource") DataSource primaryDataSource
-            , @Qualifier("primaryJpaProperties") JpaProperties jpaProperties, EntityManagerFactoryBuilder builder) {
+            , @Qualifier("primaryJpaProperties") JpaProperties jpaProperties
+            , @Qualifier("primaryHibernateProperties") HibernateProperties hibernateProperties, EntityManagerFactoryBuilder builder) {
         return builder
                 // 设置数据源
                 .dataSource(primaryDataSource)
                 // 设置jpa配置
-                .properties(jpaProperties.getProperties())
+                .properties(hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings()))
                 // 设置实体包名
                 .packages("com.multi.datasource.entity.primary")
                 // 设置持久化单元名，用于@PersistenceContext注解获取EntityManager时指定数据源
