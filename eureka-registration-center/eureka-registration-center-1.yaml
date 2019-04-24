@@ -1,0 +1,68 @@
+# 使用指定k8s节点的配置方式
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eureka-registration-center-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-registration-center-1
+  template:
+    metadata:
+      labels:
+        app: eureka-registration-center-1
+    spec:
+      # k8s节点主机名称
+      nodeName: k8s-node1
+      terminationGracePeriodSeconds: 60
+      hostNetwork: true
+      containers:
+        - name: eureka-registration-center
+          image: 192.168.3.34:80/library/eureka-registration-center:V1.0.0
+          env:
+            - name: server.port
+              value: "8761"
+            - name: eureka.node.hostname
+              value: "192.168.3.32"
+            - name: eureka.node.port
+              value: "8762"
+          ports:
+            - name: http
+              containerPort: 8761
+              hostPort: 8761
+          livenessProbe:
+            failureThreshold: 2
+            httpGet:
+              # 心跳检查的Controller
+              path: /health
+              port: 8761
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 2
+            httpGet:
+              path: /health
+              port: 8761
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-registration-center-1
+  labels:
+    app: eureka-registration-center-1
+spec:
+  ports:
+    - port: 8761
+      name: eureka-registration-center-1
+      targetPort: 8761
+  selector:
+    app: eureka-registration-center-1
