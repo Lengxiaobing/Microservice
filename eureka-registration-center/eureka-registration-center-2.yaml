@@ -61,5 +61,6 @@ spec:
     - port: 8762
       name: eureka-registration-center-2
       targetPort: 8762
+      nodePort: 8762
   selector:
     app: eureka-registration-center-2
