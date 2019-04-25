@@ -11,7 +11,13 @@ spring:
         service-id: config-center
       profile: dev
       label:
-
+      # 添加重试机制
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        max-interval: 10000
+        multiplier: 2
+        max-attempts: 10
 eureka:
   client:
     serviceUrl:
