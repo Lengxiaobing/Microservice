@@ -10,3 +10,12 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
+
+#      routes:
+#      - id: user-service
+#          uri: http://localhost:8031
+#          predicates:
+#            - Path=/config/**
+#          filters:
+#            - StripPrefix=1
