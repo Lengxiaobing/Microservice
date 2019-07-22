@@ -67,3 +67,4 @@ spec:
       nodePort: 8761
   selector:
     app: eureka-registration-center-1
+  type: NodePort
